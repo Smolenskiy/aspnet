@@ -1,0 +1,119 @@
+﻿@using AccountSystem.Models
+
+@model IndexViewModel
+
+@addTagHelper "*, AccountSystem"
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+
+</head>
+
+<h2 class="header center orange-text">Accounting System</h2>
+
+
+
+<div class="progress">
+    <div class="indeterminate"></div>
+</div>
+<form method="get" class="card-panel ">
+    <div class="form-inline form-group row">
+        <label class="flow-text blue-text text-darken-2 col s1">Дата: </label>
+        @Html.TextBox("dateTime", Model.FilterViewModel.SelectedDateTime, htmlAttributes: new { @class = "form-control col s3 offset-s1", @type = "datetime-local" })
+
+        <label class="flow-text blue-text text-darken-2 col s2">Проект: </label>
+        @Html.DropDownList("project", Model.FilterViewModel.Projects as SelectList, htmlAttributes: new { @class = "form-control col s2" })
+
+        <input type="submit" value="Фильтр" class="btn-large waves-effect waves-light red col s2 offset-s2" />
+    </div>
+</form>
+<div class="progress">
+    <div class="indeterminate"></div>
+</div>
+
+<p>
+    <a asp-action="Create" class="btn waves-effect waves-light red">Create New</a>
+</p>
+
+<table class="bordered highlight">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" class="flow-text blue-text text-darken-2"
+                   asp-route-sortState="@(Model.SortViewModel.RecordDateSort)"
+                   asp-route-page="@(Model.PageViewModel.PageNumber)"
+                   asp-route-project="@(Model.FilterViewModel.SelectedProject)">Дата</a>
+            </th>
+            <th>
+                <a asp-action="Index" class="flow-text blue-text text-darken-2"
+                   asp-route-sortState="@(Model.SortViewModel.ProjectSort)"
+                   asp-route-page="@(Model.PageViewModel.PageNumber)"
+                   asp-route-dateTime="@(Model.FilterViewModel.SelectedDateTime as DateTime?)"
+                   asp-route-project="@(Model.FilterViewModel.SelectedProject)">Проект</a>
+            </th>
+            <th>
+                <a class="flow-text blue-text text-darken-2">Текст</a>
+            </th>
+        </tr>
+    <tbody class="card-panel">
+        @foreach (var item in Model.Records)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RecordDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Project.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Text)
+                </td>
+                <td>
+                    <div style="position: relative; height: 70px;">
+                        <div class="fixed-action-btn horizontal" style="position: absolute; right: 24px;">
+                            <a class="btn-floating btn-large red">
+                                <i class="large material-icons">menu</i>
+                            </a>
+                            <ul>
+                                <li><a class="btn-floating red" asp-action="Edit" asp-route-id="@item.Id"><i class="material-icons">edit</i></a></li>
+                                <li><a class="btn-floating yellow darken-1" asp-action="Details" asp-route-id="@item.Id"><i class="material-icons">details</i></a></li>
+                                <li><a class="btn-floating green" asp-action="Delete" asp-route-id="@item.Id"><i class="material-icons">delete</i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@if (Model.PageViewModel.HasPreviousPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+       asp-route-project="@(Model.FilterViewModel.SelectedProject)"
+       asp-route-dateTime="@(Model.FilterViewModel.SelectedDateTime as DateTime?)"
+       class="btn waves-effect waves-light red">
+        <i class="material-icons">chevron_left</i>
+        Назад
+    </a>
+}
+@if (Model.PageViewModel.HasNextPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+       asp-route-project="@(Model.FilterViewModel.SelectedProject)"
+       asp-route-dateTime="@(Model.FilterViewModel.SelectedDateTime as DateTime?)"
+       class="btn waves-effect waves-light red">
+        Вперед
+        <i class="material-icons">chevron_right</i>
+    </a>
+}

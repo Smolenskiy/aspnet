@@ -1,0 +1,11 @@
+D:\World\Quests\RubiusChallenge\AccountSystem\AccountSystem\bin\Debug\netcoreapp2.0\AccountSystem.deps.json
+D:\World\Quests\RubiusChallenge\AccountSystem\AccountSystem\bin\Debug\netcoreapp2.0\AccountSystem.runtimeconfig.json
+D:\World\Quests\RubiusChallenge\AccountSystem\AccountSystem\bin\Debug\netcoreapp2.0\AccountSystem.runtimeconfig.dev.json
+D:\World\Quests\RubiusChallenge\AccountSystem\AccountSystem\bin\Debug\netcoreapp2.0\AccountSystem.dll
+D:\World\Quests\RubiusChallenge\AccountSystem\AccountSystem\bin\Debug\netcoreapp2.0\AccountSystem.pdb
+D:\World\Quests\RubiusChallenge\AccountSystem\AccountSystem\obj\Debug\netcoreapp2.0\AccountSystem.csprojResolveAssemblyReference.cache
+D:\World\Quests\RubiusChallenge\AccountSystem\AccountSystem\obj\Debug\netcoreapp2.0\AccountSystem.csproj.CoreCompileInputs.cache
+D:\World\Quests\RubiusChallenge\AccountSystem\AccountSystem\obj\Debug\netcoreapp2.0\AccountSystem.AssemblyInfoInputs.cache
+D:\World\Quests\RubiusChallenge\AccountSystem\AccountSystem\obj\Debug\netcoreapp2.0\AccountSystem.AssemblyInfo.cs
+D:\World\Quests\RubiusChallenge\AccountSystem\AccountSystem\obj\Debug\netcoreapp2.0\AccountSystem.dll
+D:\World\Quests\RubiusChallenge\AccountSystem\AccountSystem\obj\Debug\netcoreapp2.0\AccountSystem.pdb
